@@ -7,8 +7,8 @@ import Loader from "../components/Loader/Loader.component";
 const { Container, Box, Button, Typography, TextField } = require("@mui/material");
 
 const SignInPage = ({ auth, message, loading }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("123");
   const myToken = window.sessionStorage.getItem("token");
 
   const isMessageAString = typeof message === "string";
