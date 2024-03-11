@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
 
-import { addProduct, resetMessage, search, setSearchQuery } from "../redux/app/actions";
+import {
+  addProduct,
+  resetMessage,
+  search,
+  setSearchQuery,
+} from "../redux/app/actions";
 
 import autoCapitalizeString from "../utils/autoCapitalize";
 import capitalize from "../utils/capitalize";
@@ -43,7 +48,9 @@ const ShopPage = ({
   };
 
   const location = useLocation();
-  let shopLocation = location.pathname.replace("/shops/", "");
+  let shopLocation = location.pathname
+    .replace("/shops/", "")
+    .replace("%20", " ");
 
   shopLocation = capitalize(shopLocation);
 
@@ -61,7 +68,9 @@ const ShopPage = ({
   }, []);
 
   useEffect(() => {
-    searchQuery ? onSearch("products", searchQuery, shopLocation) : onSearch("products", "", shopLocation);
+    searchQuery
+      ? onSearch("products", searchQuery, shopLocation)
+      : onSearch("products", "", shopLocation);
 
     // eslint-disable-next-line
   }, [searchQuery, shopLocation]);
@@ -72,16 +81,24 @@ const ShopPage = ({
       {errorMessage ? (
         <ErrorMessage errorMessage={errorMessage} />
       ) : shop ? (
-        <Container data-aos='fade' maxWidth='lg' sx={{ my: 5 }}>
-          <ProductList shopLocation={shopLocation} messageName={messageName} changeMessageName={changeMessageName} />
+        <Container data-aos="fade" maxWidth="lg" sx={{ my: 5 }}>
+          <ProductList
+            shopLocation={shopLocation}
+            messageName={messageName}
+            changeMessageName={changeMessageName}
+          />
           {addProductMessage && messageName === "Add" ? (
-            <Message message={addProductMessage.message} type={addProductMessage.type} onClick={resetMessage} />
+            <Message
+              message={addProductMessage.message}
+              type={addProductMessage.type}
+              onClick={resetMessage}
+            />
           ) : null}
           {shopLocation === "Warehouse" ? (
             <AddForm
               loading={loadingAddProduct}
-              placeholder='Product Name'
-              buttonLabel='Add Product'
+              placeholder="Product Name"
+              buttonLabel="Add Product"
               onClick={onAddProduct}
               onKeyUp={onPressEnter}
             />
@@ -106,7 +123,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addProduct: (name, location) => dispatch(addProduct(name, location)),
   resetMessage: () => dispatch(resetMessage()),
-  onSearch: (searchFor, query, location) => dispatch(search(searchFor, query, location)),
+  onSearch: (searchFor, query, location) =>
+    dispatch(search(searchFor, query, location)),
   setSearchQuery: (query) => dispatch(setSearchQuery(query)),
 });
 

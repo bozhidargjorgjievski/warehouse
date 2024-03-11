@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -20,7 +21,7 @@ app.use(bodyParser.json());
 
 try {
   await db.authenticate();
-  initializeDB();
+  await initializeDB();
   console.log("Database connected...");
 } catch (error) {
   console.error("Connection error:", error);

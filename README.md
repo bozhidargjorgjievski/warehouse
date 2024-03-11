@@ -6,10 +6,10 @@ Clone this repository to your local machine.
 
 ## Client side
 
-### Change link to server
+### Add API url
 
-1. `cd warehouse-client/src/redux/app`
-2. Open `sagas.js`. Comment Heroku `SERVER_URL` and uncomment local `SERVER_URL`.
+1. Add `.env` file in project root
+2. Provide env variable for `REACT_APP_API_URL`
 
 ### Start App
 
@@ -29,9 +29,8 @@ Password: 123
 
 ### Database config
 
-1. `cd warehouse-api/db`
-2. Comment `const db = new Sequelize(process.env.CLEARDB_DATABASE_URL);`
-3. Uncomment the commented local config and update db values.
+1. Add `.env` file in project root
+2. Provide env variables needed in `warehouse-api/db/db.config.js`
 
 ### Start server
 
