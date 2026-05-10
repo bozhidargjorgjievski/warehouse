@@ -1,7 +1,7 @@
 import { TableRow, TableCell, TableBody } from "@mui/material";
 
 const LogCard = ({ location, message, createdAt }) => {
-  const date = new Date(createdAt).toUTCString();
+  const date = new Date(createdAt).toLocaleString();
   return (
     <TableBody>
       <TableRow>
