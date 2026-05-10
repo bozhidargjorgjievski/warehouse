@@ -83,7 +83,7 @@ const ShopPage = ({
       ) : shop ? (
         <Container data-aos="fade" maxWidth="lg" sx={{ my: 5 }}>
           <ProductList
-            shopLocation={shopLocation}
+            shopLocation={shop.location || shop.name}
             messageName={messageName}
             changeMessageName={changeMessageName}
           />

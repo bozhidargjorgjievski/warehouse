@@ -60,7 +60,7 @@ const ProductList = ({
     <>
       <Paper elevation={0} sx={{ my: 5, borderRadius: "30px 30px 0 0" }}>
         <Typography variant='h1' align='center' color='#28234A' sx={{ mb: 5, py: 5, fontSize: "3.8rem" }}>
-          {shopLocation || "Warehouse"}
+          {shopLocation}
         </Typography>
         <SearchField onSearchChange={onSearchChange} />
         <Box sx={{ position: "relative", paddingTop: "20px" }}>
